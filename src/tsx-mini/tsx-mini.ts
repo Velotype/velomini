@@ -185,7 +185,7 @@ export abstract class Component<AttrsType> implements Mountable {
  * 
  * Note: this will detect if the element hasFocus and will set newElement.focus() if needed
  */
-export function replaceElement(element: HTMLElement | undefined, newElement: HTMLElement) {
+export function replaceElement(element: HTMLElement | undefined, newElement: HTMLElement): HTMLElement {
     if (element) {
         const isFocused = document.hasFocus() ? document.activeElement == element : false
         unmountComponentElementChildren(element)
@@ -249,12 +249,12 @@ function unmountComponentElementChildren(element: Element) {
 function wrapElementIfNeeded(element: RenderableElements): HTMLElement {
     // Check for falsey
     if (!element) {
-        return createElement(divTag,displayNone) as HTMLDivElement
+        return h(divTag,displayNone) as HTMLDivElement
     }
     // If a Component returns a Component or RenderObject as a result of render
     // then it needs to be wrapped in another HTMLElement for rendering to work properly
     if (instanceOfBasicTypes(element) || (element instanceof Component) || (element instanceof Text) || Array.isArray(element) || element.hasAttribute(domKeyName)) {
-        return createElement(divTag,displayContents,element) as HTMLDivElement
+        return h(divTag,displayContents,element) as HTMLDivElement
     }
     return element
 }
@@ -313,7 +313,7 @@ export function setAttrsOnElement(element: HTMLElement, attrs: Readonly<any>) {
  * <tag attrOne={} attrTwo={}>{children}</tag>
  * ```
  */
-export function createElement(tag: Type<Component<any>> | FunctionComponent<any> | string, attrs: Readonly<any> | null, ...children: RenderableElements[]): RenderableElements {
+export function h(tag: Type<Component<any>> | FunctionComponent<any> | string, attrs: Readonly<any> | null, ...children: RenderableElements[]): RenderableElements {
     const notNullAttrs = attrs || {}
     if (typeof tag === 'string') {
         // Base HTML Element
@@ -343,7 +343,7 @@ export function createElement(tag: Type<Component<any>> | FunctionComponent<any>
 
     // Fallback case
     console.error("Invalid tag", tag, notNullAttrs, children)
-    return createElement("div",{style:"display:none;"})
+    return h("div",{style:"display:none;"})
 }
 
 /**
@@ -355,7 +355,7 @@ export function createElement(tag: Type<Component<any>> | FunctionComponent<any>
  * <tag attrOne={} attrTwo={}>{children}</tag>
  * ```
  */
-export {createElement as h}
+export {h as createElement}
 
 /**
  * Create a fragment `<></>` (which just propagates an array of `children[]`)
