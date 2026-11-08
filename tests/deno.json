@@ -7,17 +7,22 @@
     },
     "compilerOptions": {
         "jsx": "react-jsx",
-        "jsxImportSource": "jsr:@velotype/velomini",
-        "lib": ["dom", "esnext"]
+        "jsxImportSource": "@velotype/velomini",
+        "lib": [
+            "dom",
+            "esnext"
+        ]
     },
     "imports": {
         "@velotype/veloserver": "jsr:@velotype/veloserver@^0.0.2",
-        "jsr:@velotype/velomini/jsx-runtime": "../src/jsx-runtime/jsx-runtime.ts",
-        "jsr:@velotype/velomini": "../src/jsx-runtime/jsx-runtime.ts"
+        "@velotype/velomini/jsx-runtime": "../src/jsx-runtime/jsx-runtime.ts",
+        "@velotype/velomini": "../src/jsx-runtime/jsx-runtime.ts"
     },
     "lint": {
         "rules": {
-            "exclude": ["jsx-key"]
+            "exclude": [
+                "jsx-key"
+            ]
         }
     }
 }
