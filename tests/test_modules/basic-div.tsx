@@ -1,6 +1,6 @@
 // deno-lint-ignore-file jsx-boolean-value
-import {replaceElement, Component} from "jsr:@velotype/velomini"
-import type {EmptyAttrs} from "jsr:@velotype/velomini"
+import {replaceElement, Component} from "@velotype/velomini"
+import type {EmptyAttrs} from "@velotype/velomini"
 
 class BasicDivTest extends Component<EmptyAttrs> {
     override render() {

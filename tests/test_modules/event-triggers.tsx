@@ -1,5 +1,5 @@
-import {replaceElement, Component} from "jsr:@velotype/velomini"
-import type {EmptyAttrs} from "jsr:@velotype/velomini"
+import {replaceElement, Component} from "@velotype/velomini"
+import type {EmptyAttrs} from "@velotype/velomini"
 
 /**
  * Test scenarios similar to:
